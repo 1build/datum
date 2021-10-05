@@ -24,18 +24,22 @@ func (gc *NullPoint) Scan(src interface{}) error {
 	if !ok {
 		return ewkb.ErrExpectedByteSlice{Value: src}
 	}
+
 	b, err := hex.DecodeString(s)
 	if err != nil {
 		return ewkb.ErrExpectedByteSlice{Value: src}
 	}
+
 	got, err := ewkb.Unmarshal(b)
 	if err != nil {
 		return err
 	}
+
 	gc1, ok := got.(*geom.Point)
 	if !ok {
 		return wkbcommon.ErrUnexpectedType{Got: gc1, Want: gc}
 	}
+
 	gc.Point = gc1
 	return nil
 }

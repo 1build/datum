@@ -28,7 +28,7 @@ func NewPoint(srid int, lng float64, lat float64) Point {
 
 // PointFromVal creates a new point from any value. If the value is nil, the point (0 0) is returned.
 func PointFromVal(value interface{}, srid int) (*Point, error) {
-	point := NewPoint(0, 0)
+	point := NewPoint(srid, 0, 0)
 	var geometryBuffer []byte
 	convert.ConvertAssign(&geometryBuffer, value)
 	geometry, err := ewkb.Unmarshal(geometryBuffer)

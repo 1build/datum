@@ -1,4 +1,4 @@
-package postgis
+package datum
 
 import (
 	"database/sql/driver"
