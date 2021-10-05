@@ -16,20 +16,20 @@ Below is a minimal example of using datum to serialize a geospatial point to a r
 
     const srid := 4326
 
-	record := &models.Supplier{
-		Name: input.Name,
-		Location: datum.Point{
-			SRID: srid,
-			Lat:  input.Lat,
-			Lng:  input.Lng,
-		},
-	}
+    record := &models.Supplier{
+        Name: input.Name,
+        Location: datum.Point{
+            SRID: srid,
+            Lat:  input.Lat,
+            Lng:  input.Lng,
+        },
+    }
 
-	if err := record.Insert(ctx, tx, boil.Infer()); err != nil {
-		warning := fmt.Sprintf("[Supplier.Repository.CreateSupplier]: Couldn't create new supplier: %s", input.Name)
-		logger.Errorf(ctx, warning)
+    if err := record.Insert(ctx, tx, boil.Infer()); err != nil {
+        warning := fmt.Sprintf("[Supplier.Repository.CreateSupplier]: Couldn't create new supplier: %s", input.Name)
+        logger.Errorf(ctx, warning)
 
-		return nil, errors.New(warning)
-	}
+        return nil, errors.New(warning)
+    }
 ```
 
